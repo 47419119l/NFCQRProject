@@ -2,6 +2,7 @@ package com.example.sandra.nfcproject;
 
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.nfc.NfcAdapter;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -17,9 +18,11 @@ import com.google.zxing.integration.android.IntentResult;
  * A placeholder fragment containing a simple view.
  */
 public class MainActivityFragment extends Fragment {
-   private ImageButton btnnfc;
-   private ImageButton btnqr;
-   private TextView result;
+
+    private ImageButton btnnfc;
+    private ImageButton btnqr;
+    private TextView result;
+    PillowNfcManager nfcManager;
 
     public MainActivityFragment() {
     }
@@ -50,6 +53,15 @@ public class MainActivityFragment extends Fragment {
         btnnfc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                nfcManager = new PillowNfcManager(getActivity());
+                nfcManager.onActivityCreate();
+
+                nfcManager.setOnTagReadListener(new PillowNfcManager.TagReadListener() {
+                    @Override
+                    public void onTagRead(String tagRead) {
+                        Toast.makeText(getContext(), "-NFC :"+tagRead, Toast.LENGTH_LONG).show();
+                    }
+                });
 
             }
         });
