@@ -17,9 +17,9 @@ import com.google.zxing.integration.android.IntentResult;
  * A placeholder fragment containing a simple view.
  */
 public class MainActivityFragment extends Fragment {
-    ImageButton btnnfc;
-    ImageButton btnqr;
-    TextView result;
+   private ImageButton btnnfc;
+   private ImageButton btnqr;
+   private TextView result;
 
     public MainActivityFragment() {
     }
@@ -38,7 +38,11 @@ public class MainActivityFragment extends Fragment {
 
         return rootView;
     }
-
+      /**
+      * ------------------------------------------------
+      *                      NFC
+     * ------------------------------------------------
+     */
     /**
      * Metode per la configuració del butó NFC
      */
@@ -50,6 +54,13 @@ public class MainActivityFragment extends Fragment {
             }
         });
     }
+
+
+    /**
+     * ------------------------------------------------
+     *                      QR
+     * ------------------------------------------------
+     */
 
     /**
      * Metode per la configuració del butó QR
